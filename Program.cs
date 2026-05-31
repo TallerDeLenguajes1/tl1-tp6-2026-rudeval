@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Hello, World!");
 
 int a;
 
@@ -11,7 +10,3 @@ b = a;
 
 Console.WriteLine("valor de a:" + a);
 Console.WriteLine("valor de b:" + b);
-
-//read devuelve el codigo ascii de la tecla presionada
-
-
