@@ -13,6 +13,7 @@ Console.WriteLine("valor de a:" + a);
 Console.WriteLine("valor de b:" + b);
 */
 
+/*
 //-----------Ejercicio 1----------------
 
 Console.WriteLine("Ingrese un numero: ");
@@ -34,4 +35,8 @@ else {
 
     Console.WriteLine($"Numero invertido: {invertido}");
 }
+*/
+
+
+
 
