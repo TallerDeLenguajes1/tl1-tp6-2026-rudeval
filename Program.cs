@@ -49,131 +49,30 @@ Console.WriteLine(
     "-0 Salir"
 );
 
-/*int eleccionMenu = PedirNumeroInt();
-switch (eleccionMenu)
-{
-    case 1: 
-        
-        break;
-    case 2: 
-        
-        break;
-    case 3: 
-        
-        break;
-    default: 
-        Console.WriteLine("Opción no válida. Intente de nuevo.");
-        break;
-}*/
-
-//--------------V2
-Console.WriteLine("CALCULADORA V2");
-    Console.WriteLine(
-        "-1 Valor absoluto\n" +
-        "-2 Cuadrado\n" +
-        "-3 Raiz cuadrada\n" +
-        "-4 Seno\n" +
-        "-5 Coseno\n" +
-        "-6 Parte entera de un num decimal\n" +
-        "-0 Salir"
-);
-
-int continuar = 0;
+int eleccionMenu = PedirNumeroInt();
 do
 {
-
-    Console.WriteLine("Ingrese un numero para operar: ");
-        double num = PedirNumeroDouble();
-
-    Console.WriteLine($"Valor absoluto: {Math.Abs(num)}");
-    Console.WriteLine($"Cuadrado: {num * num}");
-    Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(num)}");
-    Console.WriteLine($"Seno: {Math.Sin(num)}");
-    Console.WriteLine($"Coseno: {Math.Cos(num)}");
-    Console.WriteLine($"Parte entera: {Math.Truncate(num)}");
-    
-    Console.WriteLine("...Continuar? 0-no, 1-si");
-        continuar = PedirNumeroInt();
-
-} while (continuar == 1);
-
-// -----------max y min
-continuar = 0;
-do
-{
-    Console.WriteLine("MAXIMO y MINIMO");
-
-    Console.WriteLine("Ingrese el primer numero: ");
-    double a = PedirNumeroDouble();
-
-    Console.WriteLine("Ingrese el segundo numero: ");
-    double b = PedirNumeroDouble();
-
-    Console.WriteLine($"Maximo: {Math.Max(a,b)}");
-    Console.WriteLine($"Minimo: {Math.Min(a,b)}");
-
-    Console.WriteLine("...Continuar? 0-no, 1-si");
-        continuar = PedirNumeroInt();
-    
-} while (continuar == 1);
-
-
-/*
-Console.WriteLine("CALCULADORA");
-Console.WriteLine(
-    "-1 Sumar\n" +
-    "-2 Restar\n" +
-    "-3 Multiplicar\n" +
-    "-4 Dividir\n" +
-    "-0 Salir"
-);
-
-int continuar = 0;
-do
-{
-    Console.WriteLine("Ingrese el primer numero: ");
-    double a = PedirNumeroDouble();
-
-    Console.WriteLine("Ingrese el segundo numero: ");
-    double b = PedirNumeroDouble();
-
-    Console.WriteLine("Ingrese el numero de operacion: ");
-    int eleccion = PedirNumeroInt();
-
-    double resultado = 0;
-    switch (eleccion)
+    switch (eleccionMenu)
     {
+        case 0:
+            Console.WriteLine("Programa finalizado");
+            break;
         case 1: 
-            resultado = sumar(a, b);
+            CalculadoraV1();
             break;
         case 2: 
-            resultado = restar(a, b);
+            FuncionesMatematicas();
             break;
         case 3: 
-            resultado = multiplicar(a, b);
-            break;
-        case 4: 
-            if (b != 0) resultado = dividir(a, b);
+            MaxMin();
             break;
         default: 
             Console.WriteLine("Opción no válida. Intente de nuevo.");
             break;
     }
-
-    if (eleccion == 4 && b== 0)
-    {
-        Console.WriteLine("Error");
-    }
-    else
-    {
-        Console.WriteLine($"Resultado: {resultado}");
-    }
-
-    Console.WriteLine("...Continuar? 0-no, 1-si");
-        continuar = PedirNumeroInt();
     
-} while (continuar == 1);
-*/
+} while (eleccionMenu != 0);
+
 
 static double PedirNumeroDouble()
 {
@@ -217,30 +116,136 @@ static int PedirNumeroInt()
     return numero;
 }
 
-static double sumar(double n1, double n2)
+static double Sumar(double n1, double n2)
 {
     double resultado = n1+n2;
     return resultado;
 }
 
-static double restar(double n1, double n2)
+static double Restar(double n1, double n2)
 {
     double resultado = n1-n2;
     return resultado;
 }
 
-static double multiplicar(double n1, double n2)
+static double Multiplicar(double n1, double n2)
 {
     double resultado = n1*n2;
     return resultado;
 }
 
-static double dividir(double n1, double n2)
+static double Dividir(double n1, double n2)
 {
     double resultado = n1/n2;
     return resultado;
 }
 
+static void CalculadoraV1()
+{
+    
+    Console.WriteLine("--CALCULADORAV1--");
+    Console.WriteLine(
+        "-1 Sumar\n" +
+        "-2 Restar\n" +
+        "-3 Multiplicar\n" +
+        "-4 Dividir\n" +
+        "-0 Salir"
+    );
 
+    int continuar = 0;
+    do
+    {
+        Console.WriteLine("Ingrese el primer numero: ");
+        double a = PedirNumeroDouble();
 
+        Console.WriteLine("Ingrese el segundo numero: ");
+        double b = PedirNumeroDouble();
+
+        Console.WriteLine("Ingrese el numero de operacion: ");
+        int eleccion = PedirNumeroInt();
+
+        double resultado = 0;
+        switch (eleccion)
+        {
+            case 1: 
+                resultado = Sumar(a, b);
+                break;
+            case 2: 
+                resultado = Restar(a, b);
+                break;
+            case 3: 
+                resultado = Multiplicar(a, b);
+                break;
+            case 4: 
+                if (b != 0) resultado = Dividir(a, b);
+                break;
+            default: 
+                Console.WriteLine("Opción no válida. Intente de nuevo.");
+                break;
+        }
+
+        if (eleccion == 4 && b== 0)
+        {
+            Console.WriteLine("Error");
+        }
+        else
+        {
+            Console.WriteLine($"Resultado: {resultado}");
+        }
+
+        Console.WriteLine("...Continuar? 0-no, 1-si");
+            continuar = PedirNumeroInt();
+        
+    } while (continuar == 1);
+
+}
+
+static void FuncionesMatematicas()
+{
+    //--------------V2
+    Console.WriteLine("--CALCULADORA V2--");
+
+    int continuar = 0;
+    do
+    {
+
+        Console.WriteLine("Ingrese un numero para operar: ");
+            double num = PedirNumeroDouble();
+
+        Console.WriteLine($"Valor absoluto: {Math.Abs(num)}");
+        Console.WriteLine($"Cuadrado: {num * num}");
+        Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(num)}");
+        Console.WriteLine($"Seno: {Math.Sin(num)}");
+        Console.WriteLine($"Coseno: {Math.Cos(num)}");
+        Console.WriteLine($"Parte entera: {Math.Truncate(num)}");
+        
+        Console.WriteLine("...Continuar? 0-no, 1-si");
+            continuar = PedirNumeroInt();
+
+    } while (continuar == 1);
+}
+
+static void MaxMin()
+{
+    // -----------max y min
+    Console.WriteLine("--MAXIMO y MINIMO--");
+    int continuar = 0;
+    do
+    {
+        Console.WriteLine("Ingrese el primer numero: ");
+        double a = PedirNumeroDouble();
+
+        Console.WriteLine("Ingrese el segundo numero: ");
+        double b = PedirNumeroDouble();
+
+        Console.WriteLine($"Maximo: {Math.Max(a,b)}");
+        Console.WriteLine($"Minimo: {Math.Min(a,b)}");
+
+        
+        Console.WriteLine("...Continuar? 0-no, 1-si");
+            continuar = PedirNumeroInt();
+        
+    } while (continuar == 1);
+        
+}
 
