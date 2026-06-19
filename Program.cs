@@ -13,7 +13,7 @@ Console.WriteLine("valor de a:" + a);
 Console.WriteLine("valor de b:" + b);
 */
 
-/*
+
 //-----------Ejercicio 1------------
 
 Console.WriteLine("Ingrese un numero: ");
@@ -35,7 +35,7 @@ else {
 
     Console.WriteLine($"Numero invertido: {invertido}");
 }
-*/
+
 
 //-----------Ejercicio 4-------------
 Console.WriteLine("Ingrese la primera cadena: ");
@@ -61,6 +61,103 @@ Console.WriteLine($"-> Subcadena extraída: {subcadena}");
 CalculadoraV1Ejercicio4();
 
 //--Recorrer con Foreach--
+Console.WriteLine("-> Recorremos en foreach y mostramos elementos: ");
+foreach (char elemento in Cadena1)
+{
+    Console.WriteLine(elemento);
+}
+
+//buscar ocurrencia de una palabra dentro de la cadena
+Console.WriteLine("-> Ocurrencia de parabra en cadena: ");
+Console.WriteLine("Palabra a buscar: ");
+    string PalabraBuscada = Console.ReadLine();
+int Indice = Cadena1.IndexOf(PalabraBuscada);
+if (Indice != -1)
+{
+    Console.WriteLine($"La palabra se encontro en la posicion: {Indice}");
+}else
+{
+    Console.WriteLine("La palabra no se encontro");
+}
+
+//Convertir a mayusculas y a minusculas
+string Mayus = Cadena1.ToUpper();
+    Console.WriteLine($"-> Mayusculas: {Mayus}");
+
+string Minus = Cadena1.ToLower();
+    Console.WriteLine($"-> Minusculas: {Minus}");
+
+//cadena separada con Split
+Console.Write("-> Ingrese varias palabras separadas por comas: ");
+    string Cadena = Console.ReadLine();
+
+string[] Palabras = Cadena.Split(',');
+
+Console.WriteLine("Las palabras ingresadas son:");
+foreach (string p in Palabras)
+{
+    Console.WriteLine(p.Trim()); //limpia espacios 
+}
+
+//Resolver ecuacion
+Console.Write("-> Ingrese ecuacion simple a resolver ");
+    string Ecuacion = Console.ReadLine();
+
+char[] Operadores = {'+', '-', '*', '/'};
+char OperadorEncontrado = ' '; //inicializamos
+int PosicionOp = -1; //inicializamos, ya que IndexOf devuelve -1 si no encuentra
+
+foreach (var op in Operadores)
+{
+    PosicionOp = Ecuacion.IndexOf(op); //devuelve -1 si no encuentra
+    if (PosicionOp != -1) 
+    {
+        OperadorEncontrado = op; //cuando encuentra, guarda Operador
+        break;
+    }
+}
+
+
+if (PosicionOp == -1)
+{
+    Console.Write("No se econtró operador");  
+}else
+{
+    string[] PartesEcuacion = Ecuacion.Split(OperadorEncontrado); //separamos la ecuacion
+    if (int.TryParse(PartesEcuacion[0], out int num1) && int.TryParse(PartesEcuacion[1], out int num2))
+    {
+        int resultado = 0;
+
+        switch (OperadorEncontrado)
+        {
+            case '+':
+                resultado = num1 + num2;
+                break;
+
+            case '-':
+                resultado = num1 - num2;
+                break;
+
+            case '*':
+                resultado = num1 * num2;
+                break;
+
+            case '/':
+                resultado = num1 / num2;
+                break;
+        }
+
+        Console.WriteLine($"Resultado: {resultado}");
+
+    }else
+    {
+        Console.Write("La cadena no es valida ");      
+    }
+    
+
+}
+
+
 
 
 static int PedirNumeroInt()
